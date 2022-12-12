@@ -26,13 +26,13 @@ public class BeerController {
     public ResponseEntity<BeerDto> getBeerById(@PathVariable("beerId") UUID beerId){
 
 
-        return new ResponseEntity<>(beerMapper.BeerToBeerDto(beerRepository.findById(beerId).get()), HttpStatus.OK);
+        return new ResponseEntity<>(beerMapper.beerToBeerDto(beerRepository.findById(beerId).get()), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity saveNewBeer(@RequestBody @Validated BeerDto beerDto){
 
-        beerRepository.save(beerMapper.BeerDtoToBeer(beerDto));
+        beerRepository.save(beerMapper.beerDtoToBeer(beerDto));
 
         return new ResponseEntity(HttpStatus.CREATED);
     }
