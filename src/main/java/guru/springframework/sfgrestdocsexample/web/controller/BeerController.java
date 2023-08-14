@@ -29,7 +29,7 @@ public class BeerController {
         return new ResponseEntity<>(beerMapper.beerToBeerDto(beerRepository.findById(beerId).get()), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping({"", "/"})
     public ResponseEntity saveNewBeer(@RequestBody @Validated BeerDto beerDto){
 
         beerRepository.save(beerMapper.beerDtoToBeer(beerDto));
